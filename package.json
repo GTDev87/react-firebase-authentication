@@ -1,5 +1,6 @@
 {
   "name": "create-react-app",
+  "homepage": "https://gtdev87.github.io/react-firebase-authentication",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
