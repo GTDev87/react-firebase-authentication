@@ -13,15 +13,15 @@ class Recover extends Component {
     this.setState({email: e.target.value});
   }
 	handleSubmit(e) {
-	    e.preventDefault();
-	    var email = this.state.email.trim();
+    e.preventDefault();
+    var email = this.state.email.trim();
 
-	    firebase.auth().sendPasswordResetEmail(email).then(function() {
-        // Email sent.
-        alert("Please check your email "+email+" for instructions ");
-      }, function(error) {
-        alert("sorry an error has occured, Please try again")
-      });
+    firebase.auth().sendPasswordResetEmail(email).then(() => {
+      // Email sent.
+      alert("Please check your email "+email+" for instructions ");
+    }, (error) => {
+      alert("sorry an error has occured, Please try again")
+    });
   }
   render() {
     return (

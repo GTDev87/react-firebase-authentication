@@ -6,12 +6,12 @@ import isEmail from 'validator/lib/isEmail';
 
 class Signup extends Component {
 	constructor(props) {
-    	super(props);
-    	this.state = {email: "", password:""};
-    	//
-    	this.handleEmailChange = this.handleEmailChange.bind(this)
-    	this.handlePassChange = this.handlePassChange.bind(this)
-    	this.handleSubmit = this.handleSubmit.bind(this)
+  	super(props);
+  	this.state = {email: "", password:""};
+  	//
+  	this.handleEmailChange = this.handleEmailChange.bind(this)
+  	this.handlePassChange = this.handlePassChange.bind(this)
+  	this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleEmailChange(e) {
     this.setState({email: e.target.value});
@@ -20,23 +20,23 @@ class Signup extends Component {
     this.setState({password: e.target.value});
   }
 	handleSubmit(e) {
-	    e.preventDefault();
-	    var email = this.state.email.trim();
-	    var password = this.state.password.trim();
-      if(isEmail(email)){
-  	    firebaseApp.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-  		    // Handle Errors here.
-  		    var errorMessage = error.message;
-  		    alert("errorMessage: "+ errorMessage)
-  		  });
-      }else{
-        alert("Email Address in not valid");
-      }  
+    e.preventDefault();
+    var email = this.state.email.trim();
+    var password = this.state.password.trim();
+    if(isEmail(email)){
+	    firebaseApp.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
+		    // Handle Errors here.
+		    var errorMessage = error.message;
+		    alert("errorMessage: "+ errorMessage)
+		  });
+    }else{
+      alert("Email Address in not valid");
+    }
   }
   handleFacebook(e) {
     e.preventDefault();
     var provider = new firebase.auth.FacebookAuthProvider();
-    firebaseApp.auth().signInWithPopup(provider).then(function(result) {
+    firebaseApp.auth().signInWithPopup(provider).then((result) => {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       //var token = result.credential.accessToken;
       // The signed-in user info.
@@ -47,10 +47,10 @@ class Signup extends Component {
       alert("Facebook sign in error: "+ errorMessage);
     });
   }
-   handleGoogle(e) {
+  handleGoogle(e) {
     e.preventDefault();
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebaseApp.auth().signInWithPopup(provider).then(function(result) {
+    firebaseApp.auth().signInWithPopup(provider).then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       //var token = result.credential.accessToken;
       // The signed-in user info.
@@ -69,10 +69,6 @@ class Signup extends Component {
         <div className="col-md-4"></div>
 
           <div className="form-group col-md-4">
-            <a className="btn btn-block btn-social btn-facebook" onClick={this.handleFacebook}>
-              <span className="fa fa-facebook"></span>
-              Sign in with Facebook
-            </a>
             <a className="btn btn-block btn-social btn-google" onClick={this.handleGoogle}>
               <span className="fa fa-google"></span>
               Sign in with Google

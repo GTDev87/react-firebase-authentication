@@ -8,13 +8,18 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "firebase": "^3.3.0",
+    "lunr": "^2.1.2",
+    "node-sass-chokidar": "^0.0.3",
     "react": "^15.3.1",
     "react-bootstrap": "^0.30.3",
     "react-dom": "^15.3.1",
+    "react-list": "^0.8.6",
     "react-router": "^2.7.0",
     "validator": "^5.6.0"
   },
   "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
